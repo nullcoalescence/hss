@@ -1,3 +1,5 @@
+using hss_api.Db;
+
 namespace hss_api
 {
     public class Program
@@ -12,6 +14,9 @@ namespace hss_api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Db
+            builder.Services.AddDbContext<SupperContext>();
 
             var app = builder.Build();
 
