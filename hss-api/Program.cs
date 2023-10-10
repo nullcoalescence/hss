@@ -1,4 +1,7 @@
+using hss_api.Controllers;
+using hss_api.DAL;
 using hss_api.Db;
+using hss_api.Services;
 
 namespace hss_api
 {
@@ -8,7 +11,9 @@ namespace hss_api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // ==============================================================================================
+            // DI
+            // ==============================================================================================
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,6 +23,14 @@ namespace hss_api
             // Db
             builder.Services.AddDbContext<SupperContext>();
 
+            // Data access layer
+            builder.Services.AddScoped<ISpotRepository, SpotRepository>();
+
+            // Services
+            builder.Services.AddScoped<ISpotService, SpotService>();
+
+
+            // ==============================================================================================
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

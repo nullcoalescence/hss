@@ -8,6 +8,7 @@ namespace hss_api.Db
         private readonly string dbName = "supper.db";
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Spot> Spots { get; set; }
 
         public string DbPath { get; }
 
